@@ -1,0 +1,11 @@
+[
+	{"name":"mass_delete","title":"<a id = 'massdelete' onclick='massdeleteEmail()' class='fa fa-trash'></a>","style":{"width":10,"maxWidth":10}, "filterable":false, "sortable":false},
+	{"name":"id","title":"ID","breakpoints":"xs sm","type":"number","style":{"width":80,"maxWidth":80}},
+	{"name":"template_name","title":"Template Name"},
+	{"name":"no_recipient","title":"Categories"},
+	{"name":"send_as","title":"Send as"},
+	{"name":"user_name","title":"Created by"},
+	{"name":"send_date","title":"Send Date"},
+	{"name":"last_li","title":"Action","filterable":false}
+
+]

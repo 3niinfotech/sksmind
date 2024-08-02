@@ -1,0 +1,10 @@
+[
+	{"name":"id","title":"ID"},
+	{"name":"item","title":"Item"},	
+	{"name":"qty","title":"Qty."},
+	{"name":"price","title":"Price"},	
+	{"name":"stock","title":"Stock"},	
+	{"name":"chalan","title":"Chalan"},
+	{"name":"date","title":"Date"},
+	{"name":"remark","title":"Remark"}
+]

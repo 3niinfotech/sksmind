@@ -1,0 +1,1 @@
+[16-Aug-2016 07:20:23 UTC] PHP Deprecated:  Non-static method JSMin::minify() should not be called statically, assuming $this from incompatible context in /home/sksmdiamonds/public_html/sksmdiamonds.in/ckeditor/plugins/pdw_file_browser/minify.php on line 239

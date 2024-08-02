@@ -1,0 +1,30 @@
+.container.mail-customer {
+	width: 1300px;
+}
+
+.mail-customer .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+	max-width: 60px;
+	overflow: hidden !important;
+	padding: 8px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.mail-customer .btn {
+	border: 1px solid #FFF;
+}
+
+.grid-icon {
+	margin: 0px 7px;
+	font-size: 16px;
+}
+.mail-customer  table td:nth-child(4),
+.mail-customer  table th:nth-child(4)
+{
+	width:250px !important;
+	max-width:250px !important;
+}
+
+.mail-customer  table tbody tr:nth-child(even)
+{
+	background:#f6f6f6;
+}

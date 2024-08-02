@@ -1,0 +1,2 @@
+[20-Aug-2016 05:11:09 UTC] PHP Warning:  require(/PHPMailer_5.2.0/class.phpmailer.php): failed to open stream: No such file or directory in /home/sksmdiamonds/public_html/sksmdiamonds.in/PhpMailer/phpmailertest.php on line 2
+[20-Aug-2016 05:11:09 UTC] PHP Fatal error:  require(): Failed opening required '/PHPMailer_5.2.0/class.phpmailer.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/sksmdiamonds/public_html/sksmdiamonds.in/PhpMailer/phpmailertest.php on line 2

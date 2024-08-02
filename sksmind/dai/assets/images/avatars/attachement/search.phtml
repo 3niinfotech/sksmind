@@ -1,0 +1,840 @@
+<?php 
+
+$helper = Mage::helper('snj');
+$white_color = $helper->getAllOptions('white');
+$shape = $helper->getAllOptions('shape');
+$clarity = $helper->getAllOptions('clarity');
+$cut = $helper->getAllOptions('cut');
+$polish = $helper->getAllOptions('polish');
+$symmetry = $helper->getAllOptions('symetry');
+$florosence = $helper->getAllOptions('florosence');
+$lab = $helper->getAllOptions('lab');
+$shade = $helper->getAllOptions('shade');
+$luster = $helper->getAllOptions('luster');
+$h_a = $helper->getAllOptions('h_a');
+$girdle = $helper->getAllOptions('girdle');
+$culet = $helper->getAllOptions('culet');
+$table_natts = $helper->getAllOptions('table_natts');
+$side_natts = $helper->getAllOptions('side_natts');
+$table_open = $helper->getAllOptions('table_open');
+$side_open = $helper->getAllOptions('side_open');
+$crown_extra_facet = $helper->getAllOptions('extra_facet');
+$table_white = $helper->getAllOptions('table_white');
+$side_white = $helper->getAllOptions('side_white');
+
+?>
+
+<form  method="post" action="<?php echo Mage::getBaseUrl().'snj/search/diamondresult' ?>" >
+<div class="search-container"> 
+	<div class="search-row">
+		<ul class="search-list shape-list">
+			<li class="grid-block"><input type="checkbox" name="shape[]" class="search-checkbox" onClick="checkAllShape(this)"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'shape/all.jpg'; ?>" style="width:70%"><span>ALL Shape</span></li>
+			<?php foreach($shape as $k=>$v):
+			$small = strtolower($v); 
+			$small = str_replace(" ","_",$small);
+			?>
+			<li class="grid-block"><input type="checkbox" value="<?php echo $k; ?>" name="shape[]" class="search-checkbox" onClick="checkBoxClick(this)"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'shape/'.$small.'.png'; ?>" style="width:62%"><span><?php echo $v;?></span></li>
+			<?php endforeach;?>
+			
+		</ul>
+	</div>
+	
+	<div class="search-row">
+		<div class="carat-block"> 
+			<div class="from-to-box">
+				<span class="parameter-title">Carat</span>
+				<div class="from-to">
+					<input type="text" name="carat_from" placeholder="From" class="from-to-input">
+					<input type="text" name="carat_to" placeholder="To" class="from-to-input">				
+				</div>
+			</div>
+			<ul class="search-list carat-list">
+				<li class="grid-block"><input type="checkbox" name="carat" class="search-checkbox" onClick="checkBoxClick(this)"><span>0.30 - 0.39</span></li>			
+				<li class="grid-block"><input type="checkbox" name="carat" class="search-checkbox" onClick="checkBoxClick(this)"><span>0.40 - 0.49</span></li>			
+				<li class="grid-block"><input type="checkbox" name="carat" class="search-checkbox" onClick="checkBoxClick(this)"><span>0.50 - 0.69</span></li>			
+				<li class="grid-block"><input type="checkbox" name="carat" class="search-checkbox" onClick="checkBoxClick(this)"><span>0.70 - 0.89</span></li>			
+				<li class="grid-block"><input type="checkbox" name="carat" class="search-checkbox" onClick="checkBoxClick(this)"><span>0.90 - 0.99</span></li>			
+				<li class="grid-block"><input type="checkbox" name="carat" class="search-checkbox" onClick="checkBoxClick(this)"><span>1.00 - 1.49</span></li>			
+				<li class="grid-block">
+				<input type="checkbox" name="carat" class="search-checkbox" onClick="checkBoxClick(this)"><span>1.50 - 1.99</span></li>
+				<li class="grid-block"><input type="checkbox" name="carat" class="search-checkbox" onClick="checkBoxClick(this)"><span>2.00 - 2.99</span></li>				
+				<li class="grid-block"><input type="checkbox" name="carat" class="search-checkbox" onClick="checkBoxClick(this)"><span>3.00 - 3.99</span></li>				
+				<li class="grid-block"><input type="checkbox" name="carat" class="search-checkbox" onClick="checkBoxClick(this)"><span>4+</span></li>				
+			</ul>
+		</div>
+		
+		<div class="carat-block"> 
+			<div class="from-to-box">
+				<span class="parameter-title">Clarity</span>
+				<div class="from-to">
+					
+					<select  onChange="fromClarityChange(this)" class="search-select from-to-input" id="clarityFrom">
+						<option value="0">ANY</option>
+						<?php $i=1; foreach($clarity as $k=>$v):?>
+							<option value="<?php echo $i?>"><?php echo $v?></option>
+						<?php $i++; endforeach;?>
+					</select>
+					<select onChange="toClarityChange(this)" class="search-select from-to-input" id="clarityTo" >
+						<option value="0">ANY</option>
+						<?php $i=1; foreach($clarity as $k=>$v):?>
+							<option value="<?php echo $i?>"><?php echo $v?></option>
+						<?php $i++; endforeach;?>
+					</select>
+					
+				</div>
+			</div>
+			<ul class="search-list clarity-list">
+				<?php $i=1;foreach($clarity as $k=>$v):?> 
+					<li class="grid-block">
+					<input type="checkbox" id="clarity<?php echo $i;?>" name="clarity[]" value="<?php echo $k;?>" class="search-checkbox" onClick="checkBoxClick(this)">
+					<span><?php echo $v;?></span>
+					</li>											
+				<?php $i++; endforeach;?>
+			</ul>
+		</div>
+		
+		<div class="carat-block"> 
+			<div class="from-to-box">
+				<span class="parameter-title">Color</span>
+				<div class="from-to">
+					<select  onChange="fromColorChange(this)" class="search-select from-to-input" id="colorFrom">
+						<option value="0">ANY</option>
+						<?php $i=1; foreach($white_color as $k=>$v):?>
+							<option value="<?php echo $i?>"><?php echo $v?></option>
+						<?php $i++; endforeach;?>
+					</select>
+					<select onChange="toColorChange(this)" class="search-select from-to-input" id="colorTo" >
+						<option value="0">ANY</option>
+						<?php $i=1; foreach($white_color as $k=>$v):?>
+							<option value="<?php echo $i?>"><?php echo $v?></option>
+						<?php $i++; endforeach;?>
+					</select>
+				</div>
+			</div>
+			<ul class="search-list color-list">
+				<?php $i=1; foreach($white_color as $k=>$v):?> 
+					<li class="grid-block">
+					<input type="checkbox" name="white_color[]" value="<?php echo $k;?>" id="color<?php echo $i; ?>" class="search-checkbox" onClick="checkBoxClick(this)">
+					<span><?php echo $v;?></span>
+					</li>											
+				<?php $i++; endforeach;?>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="search-row changeslist">
+		<div class="search-left-box">
+			<div class="carat-block"> 
+			<div class="from-to-box">
+				<span class="parameter-title">&nbsp;</span>				
+			</div>
+			<ul class="search-list 	carat-list change-list">							
+				<li class="grid-block"><input type="radio" class="search-checkbox" name="change" onClick="exnoneClick(this)"><span>3EX-NONE</span></li>			
+				<li class="grid-block"><input type="radio" class="search-checkbox" name="change" onClick="exClick(this)"><span>3EX</span></li>
+				<li class="grid-block"><input type="radio" class="search-checkbox" name="change" onClick="vgClick(this)"><span>3VG+</span></li>										
+				<li class="grid-block"><input type="radio" class="search-checkbox" name="change"  onClick="nobgmClick(this)"><span>NO BGM</span></li>
+			</ul>			
+			</div>
+			
+			
+			<div class="carat-block"> 
+			<div class="from-to-box">
+				<span class="parameter-title">cut</span>				
+			</div>
+			<ul class="search-list carat-list">
+				<?php $i=1; foreach($cut as $k=>$v):?> 
+					<li class="grid-block">
+					<input type="checkbox" name="cut[]" id="cut<?php echo $i;?>" value="<?php echo $k;?>" class="search-checkbox" onClick="checkBoxClick(this)">
+					<span><?php echo $v;?></span>
+					</li>											
+				<?php $i++; endforeach;?>
+			</ul>			
+			</div>
+		
+			<div class="carat-block"> 
+				<div class="from-to-box">
+					<span class="parameter-title">Polish</span>				
+				</div>
+				<ul class="search-list carat-list">
+					<?php $i=1;foreach($polish as $k=>$v):?> 
+						<li class="grid-block">
+						<input type="checkbox" name="polish[]" id="polish<?php echo $i;?>" value="<?php echo $k;?>" class="search-checkbox" onClick="checkBoxClick(this)">
+						<span><?php echo $v;?></span>
+						</li>											
+					<?php $i++;endforeach;?>
+				</ul>
+			</div>
+			<div class="carat-block"> 
+				<div class="from-to-box">
+					<span class="parameter-title">SYMMETRY</span>				
+				</div>
+				<ul class="search-list carat-list">
+					<?php $i=1;foreach($symmetry as $k=>$v):?> 
+						<li class="grid-block">
+						<input type="checkbox" name="symmetry[]" id="symmetry<?php echo $i;?>" value="<?php echo $k;?>" class="search-checkbox" onClick="checkBoxClick(this)">
+						<span><?php echo $v;?></span>
+						</li>											
+					<?php $i++; endforeach;?>
+				
+				</ul>
+			</div>
+			
+			<div class="carat-block"> 
+				<div class="from-to-box">
+					<span class="parameter-title">FLUORESCENCE</span>				
+				</div>
+				<ul class="search-list carat-list">
+					<?php $i=1;foreach($florosence as $k=>$v):?> 
+						<li class="grid-block">
+						<input type="checkbox" name="florosence[]" id="florosence<?php echo $i;?>" value="<?php echo $k;?>" class="search-checkbox" onClick="checkBoxClick(this)">
+						<span><?php echo $v;?></span>
+						</li>											
+					<?php $i++;endforeach;?>
+				</ul>
+			</div>
+			<div class="carat-block"> 
+				<div class="from-to-box discount">
+					<span class="parameter-title">Disc%</span>
+					<div class="from-to">
+						<input type="text" name="discount_from" placeholder="From" class="from-to-input">
+						<input type="text" name="discount_to" placeholder="To" class="from-to-input">				
+					</div>
+				</div>
+				<div class="from-to-box discount">
+					<span class="parameter-title">Us$/ct</span>
+					<div class="from-to">
+						<input type="text" name="usct_from" placeholder="From" class="from-to-input">
+						<input type="text" name="usct_to" placeholder="To" class="from-to-input">				
+					</div>
+				</div>
+			</div>	
+			<div class="carat-block ktos"> 
+				
+				<div class="from-to-box stone-certificate "  >
+					<span class="parameter-title">KEY TO SYMBOL</span>
+					<div class="from-to">
+						<select class="from-to-input search-select">
+							<option>KTS</option>
+						</select>		
+					</div>
+				</div>
+				<ul class="search-list carat-list">
+					<li class="grid-block"><input type="checkbox" name="fluorescence[]" class="search-checkbox" onClick="checkBoxClick(this)"><span>used</span></li>			
+					<li class="grid-block"><input type="checkbox" name="fluorescence[]" class="search-checkbox" onClick="checkBoxClick(this)"><span>not used</span></li>			
+					
+				</ul>
+			</div>	
+		</div>
+		<!--  Right Block --------------------------------->
+		<div class="search-right-box" style="padding-top:40px">
+			
+			<div class="carat-block"> 
+			<div class="from-to-box">
+				<span class="parameter-title">certificate</span>				
+			</div>
+			<ul class="search-list carat-list">
+				<?php foreach($lab as $k=>$v):?> 
+						<li class="grid-block">
+						<input type="checkbox" name="lab[]" value="<?php echo $k;?>" class="search-checkbox" onClick="checkBoxClick(this)">
+						<span><?php echo $v;?></span>
+						</li>											
+				<?php endforeach;?>
+			</ul>			
+			</div>
+		
+			<div class="carat-block"> 
+				<div class="from-to-box">
+					<span class="parameter-title">Shade</span>				
+				</div>
+				<ul class="search-list carat-list">
+					<?php $i=1;foreach($shade as $k=>$v):?> 
+						<li class="grid-block">
+						<input type="checkbox" name="shade[]" id="shade<?php echo $i;?>" value="<?php echo $k;?>" class="search-checkbox" onClick="checkBoxClick(this)">
+						<span><?php echo $v;?></span>
+						</li>											
+					<?php $i++;endforeach;?>
+				</ul>
+			</div>
+			<div class="carat-block"> 
+				<div class="from-to-box">
+					<span class="parameter-title">Luster</span>				
+				</div>
+				<ul class="search-list carat-list">
+					<?php $i=1; foreach($luster as $k=>$v):?> 
+						<li class="grid-block">
+						<input type="checkbox" name="luster[]" id="luster<?php echo $i;?>" value="<?php echo $k;?>" class="search-checkbox" onClick="checkBoxClick(this)">
+						<span><?php echo $v;?></span>
+						</li>											
+					<?php $i++; endforeach;?>
+				</ul>
+			</div>
+			<div class="carat-block"> 
+				<div class="from-to-box">
+					<span class="parameter-title"> H&A </span>				
+				</div>
+				<ul class="search-list carat-list">
+					<?php $i=1; foreach($h_a as $k=>$v):?> 
+						<li class="grid-block">
+						<input type="checkbox" name="h_a[]" id="h_a<?php echo $i;?>" value="<?php echo $k;?>" class="search-checkbox" onClick="checkBoxClick(this)">
+						<span><?php echo $v;?></span>
+						</li>											
+					<?php $i++; endforeach;?>
+				</ul>
+			</div>
+			<div style="clear:both"></div>
+			<br/>
+			<div class="carat-block"> 
+				<div class="from-to-box stone-certificate"  >
+					<span class="parameter-title">Stone id</span>
+					<div class="from-to">
+						<input type="text"  name="sku" placeholder="From" class="from-to-input">						
+					</div>
+				</div>
+				<div class="from-to-box stone-certificate">
+					<span class="parameter-title">Certificate</span>
+					<div class="from-to">
+						<input type="text" name="certificate_no" placeholder="From" class="from-to-input">						
+					</div>
+				</div>	
+			</div>
+			<br/><br/><br/>
+		</div>
+	
+	</div>
+	
+	<div class="search-row">
+		<div class="search-left-box">
+			<h2 class="search-block-title">PARAMETERS</h2>
+			<div class="carat-block"> 
+				<div class="from-to-box discount">
+					<span class="parameter-title">DIAMETER</span>
+					<div class="from-to">
+						<input type="text" name="diameter_from" placeholder="From" class="from-to-input">
+						<input type="text" name="diameter_to" placeholder="To" class="from-to-input">				
+					</div>
+				</div>
+				<div class="from-to-box discount">
+					<span class="parameter-title">RATIO</span>
+					<div class="from-to">
+						<input type="text" name="ratio_from" placeholder="From" class="from-to-input">
+						<input type="text" name="ratio_to" placeholder="To" class="from-to-input">				
+					</div>
+				</div>
+			</div>
+			<div class="carat-block"> 
+				<div class="from-to-box discount">
+					<span class="parameter-title">TOTAL DEPTH</span>
+					<div class="from-to">
+						<input type="text" name="total_depth_from" placeholder="From" class="from-to-input">
+						<input type="text" name="total_depth_to" placeholder="To" class="from-to-input">				
+					</div>
+				</div>
+				<div class="from-to-box discount">
+					<span class="parameter-title">LENGTH</span>
+					<div class="from-to">
+						<input type="text" name="length_from" placeholder="From" class="from-to-input">
+						<input type="text" name="length_to" placeholder="To" class="from-to-input">				
+					</div>
+				</div>
+			</div>
+			
+			<div class="carat-block"> 
+				<div class="from-to-box discount">
+					<span class="parameter-title">TABLE</span>
+					<div class="from-to">
+						<input type="text" name="table_from" placeholder="From" class="from-to-input">
+						<input type="text" name="table_to" placeholder="To" class="from-to-input">				
+					</div>
+				</div>
+				<div class="from-to-box discount">
+					<span class="parameter-title">WIDTH</span>
+					<div class="from-to">
+						<input type="text" name="width_from" placeholder="From" class="from-to-input">
+						<input type="text" name="width_to" placeholder="To" class="from-to-input">				
+					</div>
+				</div>
+			</div>
+			
+			<div class="carat-block"> 
+				<div class="from-to-box discount">
+					<span class="parameter-title">CROWN HEIGHT</span>
+					<div class="from-to">
+						<input type="text" name="crown_height_from" placeholder="From" class="from-to-input">
+						<input type="text" name="crown_height_to" placeholder="To" class="from-to-input">				
+					</div>
+				</div>
+				<div class="from-to-box discount">
+					<span class="parameter-title">STAR LENGTH</span>
+					<div class="from-to">
+						<input type="text" name="star_length_from" placeholder="From" class="from-to-input">
+						<input type="text" name="star_length_to" placeholder="To" class="from-to-input">				
+					</div>
+				</div>
+			</div>
+			
+			<div class="carat-block"> 
+				<div class="from-to-box discount">
+					<span class="parameter-title">PAVILION HEIGHT</span>
+					<div class="from-to">
+						<input type="text" name="pavalian_height_from" placeholder="From" class="from-to-input">
+						<input type="text" name="pavalian_height_to" placeholder="To" class="from-to-input">				
+					</div>
+				</div>
+				<div class="from-to-box discount">
+					<span class="parameter-title">LOWER HALF</span>
+					<div class="from-to">
+						<input type="text" name="lower_half_from" placeholder="From" class="from-to-input">
+						<input type="text" name="lower_half_to" placeholder="To" class="from-to-input">				
+					</div>
+				</div>
+			</div>
+			
+			<div class="carat-block"> 
+				<div class="from-to-box discount">
+					<span class="parameter-title"> PAVILION ANGLE</span>
+					<div class="from-to">
+						<input type="text" name="pavalian_angle_from" placeholder="From" class="from-to-input">
+						<input type="text" name="pavalian_angle_to" placeholder="To" class="from-to-input">				
+					</div>
+				</div>
+				<div class="from-to-box discount">
+					<span class="parameter-title"> GIRDLE %</span>
+					<div class="from-to">
+						<input type="text" name="girdle_percentage_from" placeholder="From" class="from-to-input">
+						<input type="text" name="girdle_percentage_to" placeholder="To" class="from-to-input">				
+					</div>
+				</div>
+			</div>
+			
+			<div class="carat-block"> 
+				<div class="from-to-box discount">
+					<span class="parameter-title">CROWN ANGLE</span>
+					<div class="from-to">
+						<input type="text" name="crown_angle_from" placeholder="From" class="from-to-input">
+						<input type="text" name="crown_angle_to" placeholder="To" class="from-to-input">				
+					</div>
+				</div>
+				<div class="from-to-box discount">
+					<span class="parameter-title"> GIRDLE</span>
+					<div class="from-to">
+						<select name="girdle" class="search-select from-to-input">
+						<option value="">ANY</option>
+						<?php foreach($girdle as $k=>$v):?>
+							<option value="<?php $k?>"><?php echo $v?></option>
+						<?php endforeach;?>
+					</select>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<!--  Right Block --------------------------------->
+		<div class="search-right-box">
+			<h2 class="search-block-title">INCLUSION</h2>
+			<div class="carat-block"> 
+				<div class="from-to-box table">
+					<span class="parameter-title"> TABLE WHITE</span>
+					<div class="from-to">
+						
+						<select name="table_white" class="search-select from-to-input">
+							<option value="">ANY</option>
+							<?php foreach($table_white as $k=>$v):?>
+								<option value="<?php $k?>"><?php echo $v?></option>
+							<?php endforeach;?>
+						</select>
+					</div>
+				</div>
+				<div class="from-to-box table">
+					<span class="parameter-title"> SIDE WHITE</span>
+					<div class="from-to">
+						<select name="side_white" class="search-select from-to-input">
+							<option value="">ANY</option>
+							<?php foreach($side_white as $k=>$v):?>
+								<option value="<?php $k?>"><?php echo $v?></option>
+							<?php endforeach;?>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			<div class="carat-block natts"> 
+				<div class="from-to-box">
+					<span class="parameter-title"> TABLE NATTS </span>				
+				</div>
+				<ul class="search-list carat-list">
+					<?php foreach($table_natts as $k=>$v):?> 
+						<li class="grid-block">
+						<input type="checkbox" name="table_natts[]" value="<?php echo $k;?>" class="search-checkbox" onClick="checkBoxClick(this)">
+						<span><?php echo $v;?></span>
+						</li>											
+					<?php endforeach;?>
+				</ul>
+			</div>
+			
+			<div class="carat-block natts"> 
+				<div class="from-to-box">
+					<span class="parameter-title"> SIDE NATTS </span>				
+				</div>
+				<ul class="search-list carat-list">
+					<?php foreach($side_natts as $k=>$v):?> 
+						<li class="grid-block">
+						<input type="checkbox" name="side_natts[]" value="<?php echo $k;?>" class="search-checkbox" onClick="checkBoxClick(this)">
+						<span><?php echo $v;?></span>
+						</li>											
+					<?php endforeach;?>
+				</ul>
+			</div>
+			<div class="carat-block natts"> 
+				<div class="from-to-box">
+					<span class="parameter-title"> TABLE OPEN </span>				
+				</div>
+				<ul class="search-list carat-list">
+					<?php foreach($table_open as $k=>$v):?> 
+						<li class="grid-block">
+						<input type="checkbox" name="side_open[]" value="<?php echo $k;?>" class="search-checkbox" onClick="checkBoxClick(this)">
+						<span><?php echo $v;?></span>
+						</li>											
+					<?php endforeach;?>
+				</ul>
+			</div>
+
+			<div class="carat-block natts"> 
+				<div class="from-to-box">
+					<span class="parameter-title"> SIDE OPEN </span>				
+				</div>
+				<ul class="search-list carat-list">
+					<?php foreach($side_open as $k=>$v):?> 
+						<li class="grid-block">
+						<input type="checkbox" name="side_open[]" value="<?php echo $k;?>" class="search-checkbox" onClick="checkBoxClick(this)">
+						<span><?php echo $v;?></span>
+						</li>											
+					<?php endforeach;?>
+				</ul>
+			</div>	
+			
+			<div class="carat-block natts"> 
+				<div class="from-to-box">
+					<span class="parameter-title"> CROWN EXTRA FACET </span>				
+				</div>
+				<ul class="search-list carat-list">
+					<?php foreach($crown_extra_facet as $k=>$v):?> 
+						<li class="grid-block">
+						<input type="checkbox" name="extra_facet[]" value="<?php echo $k;?>" class="search-checkbox" onClick="checkBoxClick(this)">
+						<span><?php echo $v;?></span>
+						</li>											
+					<?php endforeach;?>
+				</ul>
+			</div>
+
+			<div class="carat-block natts" style="padding-top:13px"> 
+				<div class="from-to-box">
+					<span class="parameter-title"> CULET</span>				
+				</div>
+				<div class="search-list carat-list">
+					<select name="culet" class="search-select from-to-input">
+							<option value="">ANY</option>
+							<?php foreach($culet as $k=>$v):?>
+								<option value="<?php $k?>"><?php echo $v?></option>
+							<?php endforeach;?>
+						</select>
+				</div>
+			</div>			
+			
+		</div>
+	</div>
+
+</div>
+
+<div class="button-group">
+	<button type="sumbit" class="btn search">Search</button>
+	<button type="button" onClick="location.reload();" class="btn reset">Reset</button>	
+</div>
+</form>
+<script>
+function checkBoxClick(box)
+{
+		if(jQuery(box).is(':checked'))
+		{
+			jQuery(box).parent().addClass('selected');
+		}
+		else
+		{
+			jQuery(box).parent().removeClass('selected');
+		}
+}
+
+function checkAllShape(box)
+{
+		if(jQuery(box).is(':checked'))
+		{
+			jQuery(box).parent().addClass('selected');
+			jQuery('.shape-list li').addClass('selected');			
+			jQuery('.shape-list li input').prop('checked', true);
+			
+		}
+		else
+		{
+			jQuery('.shape-list li').removeClass('selected');			
+			jQuery('.shape-list li input').prop('checked', false);
+			jQuery(box).parent().removeClass('selected');
+			
+		}
+}
+
+	function fromClarityChange(fclarity)
+	{
+		var fval = parseInt( fclarity.value);
+		var tval = parseInt(jQuery('#clarityTo').val());
+		jQuery('.clarity-list li input').prop('checked', false);
+		jQuery('.clarity-list li').removeClass('selected');
+		
+		if(tval == 0 || fval >= tval)
+		{
+			jQuery('#clarityTo').val(fval);
+			
+			jQuery('#clarity'+fval).prop('checked', true);
+			jQuery('#clarity'+fval).parent().addClass('selected');			
+		}
+		else
+		{
+			for(i=fval;i<=tval;i++)
+			{
+				jQuery('#clarity'+i).prop('checked', true);
+				jQuery('#clarity'+i).parent().addClass('selected');			
+			}
+		}
+	}
+	
+	function toClarityChange(fclarity)
+	{
+		var tval = parseInt( fclarity.value);
+		var fval = parseInt(jQuery('#clarityFrom').val());
+		jQuery('.clarity-list li input').prop('checked', false);
+		jQuery('.clarity-list li').removeClass('selected');
+		
+		if(fval == 0 || fval >= tval)
+		{
+			jQuery('#clarityFrom').val(tval);
+			
+			jQuery('#clarity'+tval).prop('checked', true);
+			jQuery('#clarity'+tval).parent().addClass('selected');			
+		}
+		else
+		{
+			for(i=fval;i<=tval;i++)
+			{
+				jQuery('#clarity'+i).prop('checked', true);
+				jQuery('#clarity'+i).parent().addClass('selected');			
+			}
+		}
+	}
+	
+	
+	
+	function fromColorChange(fcolor)
+	{
+		var fval = parseInt( fcolor.value);
+		var tval = parseInt(jQuery('#colorTo').val());
+		jQuery('.color-list li input').prop('checked', false);
+		jQuery('.color-list li').removeClass('selected');
+		
+		if(tval == 0 || fval >= tval)
+		{
+			jQuery('#colorTo').val(fval);
+			
+			jQuery('#color'+fval).prop('checked', true);
+			jQuery('#color'+fval).parent().addClass('selected');			
+		}
+		else
+		{
+			for(i=fval;i<=tval;i++)
+			{
+				jQuery('#color'+i).prop('checked', true);
+				jQuery('#color'+i).parent().addClass('selected');			
+			}
+		}
+	}
+	
+	function toColorChange(fcolor)
+	{
+		var tval = parseInt( fcolor.value);
+		var fval = parseInt(jQuery('#colorFrom').val());
+		jQuery('.color-list li input').prop('checked', false);
+		jQuery('.color-list li').removeClass('selected');
+		
+		if(fval == 0 || fval >= tval)
+		{
+			jQuery('#colorFrom').val(tval);
+			
+			jQuery('#color'+tval).prop('checked', true);
+			jQuery('#color'+tval).parent().addClass('selected');			
+		}
+		else
+		{
+			for(i=fval;i<=tval;i++)
+			{
+				jQuery('#color'+i).prop('checked', true);
+				jQuery('#color'+i).parent().addClass('selected');			
+			}
+		}
+	}
+	function exnoneClick(box)
+	{
+		changeslist();
+		if(jQuery(box).is(':checked'))
+		{
+			jQuery(box).parent().addClass('selected');
+			jQuery('#cut1').prop('checked', true);
+			jQuery('#cut1').parent().addClass('selected');
+			
+			jQuery('#polish1').prop('checked', true);
+			jQuery('#polish1').parent().addClass('selected');
+			
+			jQuery('#symmetry1').prop('checked', true);
+			jQuery('#symmetry1').parent().addClass('selected');
+			
+			jQuery('#florosence1').prop('checked', true);
+			jQuery('#florosence1').parent().addClass('selected');
+		}
+		else
+		{
+			jQuery(box).parent().removeClass('selected');
+			
+			jQuery('#cut1').prop('checked', false);
+			jQuery('#cut1').parent().removeClass('selected');
+			
+			jQuery('#polish1').prop('checked', false);
+			jQuery('#polish1').parent().removeClass('selected');
+			
+			jQuery('#symmetry1').prop('checked', false);
+			jQuery('#symmetry1').parent().removeClass('selected');
+			
+			jQuery('#florosence1').prop('checked', false);
+			jQuery('#florosence1').parent().removeClass('selected');
+		}
+	}
+	
+	function exClick(box)
+	{
+		changeslist();
+		if(jQuery(box).is(':checked'))
+		{
+			jQuery(box).parent().addClass('selected');
+			jQuery('#cut1').prop('checked', true);
+			jQuery('#cut1').parent().addClass('selected');
+			
+			jQuery('#polish1').prop('checked', true);
+			jQuery('#polish1').parent().addClass('selected');
+			
+			jQuery('#symmetry1').prop('checked', true);
+			jQuery('#symmetry1').parent().addClass('selected');
+			
+		}
+		else
+		{
+			jQuery(box).parent().removeClass('selected');
+			
+			jQuery('#cut1').prop('checked', false);
+			jQuery('#cut1').parent().removeClass('selected');
+			
+			jQuery('#polish1').prop('checked', false);
+			jQuery('#polish1').parent().removeClass('selected');
+			
+			jQuery('#symmetry1').prop('checked', false);
+			jQuery('#symmetry1').parent().removeClass('selected');
+			
+		}
+	}
+	
+	
+	function vgClick(box)
+	{
+		changeslist();
+		if(jQuery(box).is(':checked'))
+		{
+			jQuery(box).parent().addClass('selected');
+			jQuery('#cut1').prop('checked', true);
+			jQuery('#cut1').parent().addClass('selected');
+			
+			jQuery('#polish1').prop('checked', true);
+			jQuery('#polish1').parent().addClass('selected');
+			
+			jQuery('#symmetry1').prop('checked', true);
+			jQuery('#symmetry1').parent().addClass('selected');
+			
+			
+			jQuery('#cut2').prop('checked', true);
+			jQuery('#cut2').parent().addClass('selected');
+			
+			jQuery('#polish2').prop('checked', true);
+			jQuery('#polish2').parent().addClass('selected');
+			
+			jQuery('#symmetry2').prop('checked', true);
+			jQuery('#symmetry2').parent().addClass('selected');
+			
+		}
+		else
+		{
+			jQuery(box).parent().removeClass('selected');
+			
+			jQuery('#cut1').prop('checked', false);
+			jQuery('#cut1').parent().removeClass('selected');
+			
+			jQuery('#polish1').prop('checked', false);
+			jQuery('#polish1').parent().removeClass('selected');
+			
+			jQuery('#symmetry1').prop('checked', false);
+			jQuery('#symmetry1').parent().removeClass('selected');
+			
+			
+			jQuery('#cut2').prop('checked', false);
+			jQuery('#cut2').parent().removeClass('selected');
+			
+			jQuery('#polish2').prop('checked', false);
+			jQuery('#polish2').parent().removeClass('selected');
+			
+			jQuery('#symmetry2').prop('checked', false);
+			jQuery('#symmetry2').parent().removeClass('selected');
+		}
+	}
+	
+	
+	function nobgmClick(box)
+	{
+		changeslist();
+		if(jQuery(box).is(':checked'))
+		{
+			jQuery(box).parent().addClass('selected');
+			jQuery('#shade1').prop('checked', true);
+			jQuery('#shade1').parent().addClass('selected');
+			
+			jQuery('#luster1').prop('checked', true);
+			jQuery('#luster1').parent().addClass('selected');
+			
+			
+			jQuery('#luster2').prop('checked', true);
+			jQuery('#luster2').parent().addClass('selected');			
+			
+		}
+		else
+		{
+			jQuery(box).parent().removeClass('selected');
+			
+			jQuery('#shade1').prop('checked', false);
+			jQuery('#shade1').parent().removeClass('selected');
+			
+			jQuery('#luster1').prop('checked', false);
+			jQuery('#luster1').parent().removeClass('selected');
+			
+			
+			jQuery('#luster2').prop('checked', false);
+			jQuery('#luster2').parent().removeClass('selected');	
+		}
+	}
+	function changeslist()
+	{
+		jQuery('.changeslist li input:checkbox').prop('checked', false);
+		jQuery('.changeslist li').removeClass('selected');
+	}
+</script>
+

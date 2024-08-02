@@ -1,0 +1,454 @@
+body {
+	margin:0;
+}
+div#top-bar {
+  background-color: #337ab7;
+  padding: 3px 0;
+}
+
+.header_container {
+  background-color: #666;
+  min-height:55px;
+}
+
+.error_div {
+  background: #f00 none repeat scroll 0 0;
+  color: #fff;
+  font-size: 15px !important;
+  height: 50px;
+  padding-left: 3%;
+  padding-top: 15px;
+  width: 100%;
+   float:left;
+}
+.success_div {
+  background: #008000 none repeat scroll 0 0;
+  color: #fff;
+  font-size: 15px !important;
+  height: 50px;
+  padding-left: 3%;
+  padding-top: 15px;
+  width: 100%;
+  float:left;
+}
+
+/********* TOP Menu ********/
+
+.nav-pills > li > a {
+  border-radius: 0 !important;
+  font-size: 14px !important;
+  letter-spacing: 1px;
+  padding: 13px 30px !important;
+}
+
+.topmenu {
+  border-bottom: 1px solid #ccc;
+  float: left;
+  margin: 0;
+  width: 100%;
+}
+
+.nav {
+  margin-bottom: 0 !important;
+  float: left;
+}
+.nav-pills > li {
+  border-right: 1px solid #ccc ;
+  float: left;
+}
+.nav-pills > li + li {
+  margin-left: 0 !important;
+}
+.user-account {
+  float: right;
+  margin-right: 0;
+  margin-top: 10px;
+  padding: 0;
+  position: relative;
+}
+.user-account > span {
+  background: #eee none repeat scroll 0 0;
+  color: #337ab7;
+  cursor: pointer;
+  font-size: 17px;
+  letter-spacing: 1px;
+  padding: 12px 20px 14px;
+  text-align: center;
+  text-transform: capitalize;
+}
+.user-account span i {
+  font-size: 20px;
+  margin-top: 0;
+  padding-left: 10px;
+  padding-top: 0;
+}
+
+.account-action {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+  padding: 15px 0 5px;
+  position: absolute;
+  right: 1px;
+  top: 36px;
+  width: 214px;
+  z-index: 999;
+}
+.account-action > li { 
+  float: left;
+  list-style: outside none none;
+  width: 100%;
+}
+.account-action li a {
+  float: left;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 10px 25px !important;
+  width: 100%;
+}
+.account-action > li.divider {
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+}
+.account-action li a:hover {
+text-decoration:none;
+background:#ccc;
+}
+/*** Master Page ****/
+
+.main-container {
+  float: left;
+  margin-bottom: 40px;
+  padding: 30px;
+  width: 100%;
+}
+.master-group {
+  border: 0 solid #e1e1e1;
+  float: left;
+  padding: 20px;
+  width: 50%;
+}
+
+.entry-group { 
+  float: left;
+  padding: 20px;
+  width: 29%;
+}
+.text-input {
+  border: 1px solid #ccc !important;
+  border-radius: 0 !important;
+  padding: 6px 10px !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.0) inset !important;
+  float:left;
+  
+}
+
+.form-style-6{
+    font: 95% Arial, Helvetica, sans-serif;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 16px;
+    background: #F7F7F7;
+}
+.form-style-6 .master-title {
+  background: #43d1af none repeat scroll 0 0;
+  color: #fff;
+  font-size: 140%;
+  font-weight: normal;
+  margin: 0 0 15px;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+}
+.form-style-6 input[type="text"],
+.form-style-6 input[type="password"],
+.form-style-6 input[type="date"],
+.form-style-6 input[type="datetime"],
+.form-style-6 input[type="email"],
+.form-style-6 input[type="number"],
+.form-style-6 input[type="search"],
+.form-style-6 input[type="time"],
+.form-style-6 input[type="url"],
+.form-style-6 textarea,
+.form-style-6 select
+{
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 4%;
+    border: 1px solid #ccc;
+    padding: 3%;
+    color: #555;
+    font: 95% Arial, Helvetica, sans-serif;
+}
+
+.form-style-6 input[type="text"]:focus,
+.form-style-6 input[type="password"]:focus,
+.form-style-6 input[type="date"]:focus,
+.form-style-6 input[type="datetime"]:focus,
+.form-style-6 input[type="email"]:focus,
+.form-style-6 input[type="number"]:focus,
+.form-style-6 input[type="search"]:focus,
+.form-style-6 input[type="time"]:focus,
+.form-style-6 input[type="url"]:focus,
+.form-style-6 textarea:focus,
+.form-style-6 select:focus
+{
+    box-shadow: 0 0 5px #43D1AF;
+    padding: 3%;
+    border: 1px solid #43D1AF;
+}
+
+.form-style-6 select, .form-style-6 select:focus {
+  height: 41px;
+  padding: 10px;
+}
+.select-list {
+  margin-bottom: 0 !important;
+  margin-top: 20px;
+}
+option {
+  border-bottom: 1px solid #f1f1f1;
+  padding: 5px;
+}
+.form-style-6 input[type="submit"],
+.form-style-6 input[type="button"]{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    padding: 3%;
+    background: #43D1AF;
+    border-bottom: 2px solid #30C29E;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;   
+    color: #fff;
+}
+.form-style-6 input[type="submit"]:hover,
+.form-style-6 input[type="button"]:hover{
+    background: #2EBC99;
+}
+.button-input {
+  background: #027d57 none repeat scroll 0 0 !important;
+  border: 0 solid #027d57;
+  color: #fff;
+  float: left;
+  margin-left: 10px;
+  padding: 7px 25px;
+}
+.group-title {
+  color: #666;
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-align: left;
+  width: 100%;
+}
+
+/*** Footer ***/
+
+.footer_container {
+  background-color: #000;
+  bottom: 0;
+  float: left;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
+
+
+.footer_outer{background-color:#027d57 }
+
+.footer {
+  min-height:150px;
+}
+.farm {
+  color: #fff;
+  font-size: 14px;
+  margin: 0;
+  padding: 15px 25px;
+  text-align: right;
+}
+.farm span {
+  float: left;
+}
+.farm a {
+  color: #fff;
+}
+
+/* HOME PAGE */
+
+.company-name {
+  font-size: 25px;
+  letter-spacing: 1px;
+  padding-top: 16%;
+  text-align: center;
+  width: 100%;
+}
+
+
+/*** External / Internal **/
+
+.datagrid {
+  float: right;
+  position: relative;
+  width: 66%;
+}
+.btn-primary {  
+  padding: 9px 12px !important; 
+}
+.btn.btn-default.dropdown-toggle {
+  padding: 14px 15px !important;
+}
+.external-title {
+  color: #2e6da4;
+  font-size: 20px;
+  letter-spacing: 1px;
+  position: absolute;
+  top: 15px;
+}
+.is-message {
+  color: #00d600;
+  margin-top: -8px;
+  padding-left: 10px;
+}
+
+
+/** Report **/
+
+.report-right {
+  float: right;
+  width: 81%;
+}
+.report-left {
+  float: left;
+  width: 13%;
+}
+.report-left .form-style-6 {
+  float: left;
+  padding: 10px;
+}
+.form-style-6 > ul {
+  float: left;
+  padding-left: 0 !important;
+  text-align: left !important;
+  width: 100%;
+}
+.report-left ul li {
+  background: #43d1af none repeat scroll 0 0;
+  color: #fff !important;
+  float: left;
+  font-size: 16px;
+  letter-spacing: 1px;
+  list-style: outside none none;
+  margin: 5px 0;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+}
+.report-left li a {
+  color: #fff;  
+}
+.report-head {
+  border-bottom: 1px solid #ccc;
+  float: left;
+  padding-bottom: 10px;
+  width: 100%;
+}
+.report-head > span {
+  font-size: 15px;
+  font-weight: bold;
+  margin-right: 12px;
+}
+.report-head select {
+  border: 1px solid #ccc;
+  padding: 3px 5px;
+  width: 210px;
+}
+
+.report-content {
+  float: left;
+  padding-top: 20px;
+  width: 100%;
+}
+.content-block {
+  float: left;
+  margin: 15px;
+  padding-right: 73px;
+  width: 30%;
+}
+.block-title {
+  border-bottom: 1px solid #f1f1f1;
+  color: #999;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+.block-Value {
+  color: #027d57;
+  font-size: 16px;
+}
+.please-wait{
+  color: #999;
+  font-size: 19px;
+  letter-spacing: 1px;
+  padding-top: 15%;
+  text-align: center;
+}
+
+.purchase-report {
+  float: left;
+  width: 100%;
+  margin-top:20px;
+}
+.purchase-report p {
+  border-bottom: 1px solid #ccc;
+  color: #999;
+  font-size: 18px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+}
+.purchase-report > ul {
+  border-bottom: 1px solid #f1f1f1;
+  float: left;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  width: 59%;
+}
+.purchase-report li {
+  float: left;
+  list-style: outside none none;
+  min-width: 130px;
+  padding: 5px 0;
+  text-align: left !important;
+}
+.first-ul > li {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+
+/*** login **/
+.login-form input {
+  font-size: 16px !important;
+  letter-spacing: 1px;
+}
+
+.display_errors {
+  color: #ff0000;
+  font-size: 14px;
+  padding: 5px;
+  text-align: center;
+}

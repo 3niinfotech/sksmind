@@ -1,0 +1,1 @@
+[23-Feb-2017 06:38:12 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/sksmdiamonds/public_html/snjsoft/database.php on line 2

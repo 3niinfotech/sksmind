@@ -1,0 +1,253 @@
+<?php
+//include('../../../../../variable.php');
+include_once('../../../database.php');
+include_once('../../Helper.php');
+class parcelModel
+{
+    public $table;
+	public $table_product;
+	public $table_product_value;
+	public $helper;
+	 function __construct()
+    {
+        try {
+            $this->table  = "dai_inward";
+			$this->table_product  = "dai_product";
+			$this->table_product_value  = "dai_product_value";
+			$this->helper  = new Helper;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+	//get all ledger Data
+      public function getMyInventory($sku)	
+    {
+		$sku = trim($sku);
+		if( $sku !='')
+			$sku = " and sku like'%".$sku."%'";
+		
+		$rs = mysql_query("SELECT * FROM ".$this->table_product ." p LEFT JOIN ".$this->table_product_value ." pv ON p.id = pv.product_id WHERE p.company=".$_SESSION['companyId']." and (p.outward='' || p.outward='memo' || p.outward='lab') and p.group_type='parcel' and p.polish_carat > 0 and visibility=1 ".$sku." ORDER BY p.sku");
+		$data = array();
+		while($row = mysql_fetch_assoc($rs))
+		{
+			$data[] =  $row;
+		}
+		
+		return  $data;			
+    }
+
+	public function getDetail($id,$t='')
+    {
+		$data = array();
+		if($t=='all')
+		{
+			$rs = mysql_query("SELECT * FROM ".$this->table_product ." p WHERE p.company=".$_SESSION['companyId']." and p.id=".$id);
+			while($row = mysql_fetch_assoc($rs))
+			{
+				
+				$rs1 = mysql_query("SELECT * FROM  ".$this->table_product_value ." WHERE product_id=".$id);
+				while($row1 = mysql_fetch_assoc($rs1))
+				{
+					 $row['record'] = $row1;
+				}
+				
+				$data =  $row;
+			}
+		}
+		else
+		{
+			$rs = mysql_query("SELECT polish_pcs,polish_carat,price,amount FROM ".$this->table_product ." WHERE company=".$_SESSION['companyId']." and id=".$id);
+			while($row = mysql_fetch_assoc($rs))
+			{
+				$data = $row;
+			}	
+		}				
+		return  $data;			
+    }	
+	public function toSingle($post)
+	{
+		try
+		{
+			$rs = 1;			
+			$id = $post['id'];
+			$edata = $this->getDetail($id,'all');
+			
+			$products = $post['products'];
+			$bp = array();	
+			foreach(explode(',',$edata['parcel_products'] ) as $k => $v)
+			{
+				$data = $this->getDetail($v,'all');
+				if(!in_array($v,$products))
+				{
+					$bp[] = $v;
+					continue;
+				}
+				$edata['rought_pcs']  -= $data['rought_pcs'];
+				$edata['rought_carat']  -= $data['rought_carat'];
+				$edata['polish_pcs']  -= $data['polish_pcs'];
+				$edata['polish_carat']  -= $data['polish_carat'];
+				$edata['cost']  -= $data['cost'];
+				$edata['price']  -= $data['price'];
+				$edata['amount']  -= $data['amount'];
+				
+
+				$sql = "UPDATE ".$this->table_product." SET parcel_id=''  WHERE id=".$data['id'];		
+						
+				$rs = mysql_query($sql);
+				if(!$rs)
+				{
+					$rs = mysql_error();
+					break;					
+				}
+				$history =array();
+				$history['product_id'] = $v;
+				$history['action'] = 'from_box';	
+				$history['type'] = 'cr';
+				$history['date'] = date("Y-m-d H:i:s");
+				$history['description'] = "Importing by Unboxing from ".$edata['sku']." with  carat :".$v['polish_carat'];
+				$history['pcs'] = $data['polish_pcs'];
+				$history['carat'] = $data['polish_carat'];
+				$history['amount'] = $data['amount'];
+				$history['price'] = $data['price'];
+				$rs = $this->helper->addHistory($history);
+				if(!is_numeric($rs) && $rs!=1)
+				{
+					return $rs;	
+				}
+				
+				$history = array();
+				$history['product_id'] = $edata['id'];				
+				$history['action'] = "unboxing";
+				$history['type'] = 'dr';
+				$history['description'] = "Unboxing for Sku : ".$data['sku'];
+				$history['date'] = date("Y-m-d H:i:s");				
+				$history['pcs'] = $data['polish_pcs'];
+				$history['carat'] = $data['polish_carat'];
+				$history['amount'] = $data['amount'];
+				$history['price'] = $data['price'];
+				$history['sku'] = $edata['sku'];				
+				
+				$rs = $this->helper->addHistory($history);
+				if(!is_numeric($rs) && $rs!=1)
+				{
+					return $rs;	
+				}
+				
+			}
+			
+			if($rs)
+			{	
+				$record = $edata['record'];
+				unset($edata['record']);
+				
+				
+				$edata['parcel_products'] = implode(",",$bp);
+				$edata['box_products']  ="";
+				
+			
+				$data = $this->helper->getUpdateString($edata);	
+				$sql = "UPDATE ".$this->table_product." SET ".$data." WHERE id=".$edata['id'];		
+				$rs = mysql_query($sql);
+				if(!$rs)
+				{
+					$rs = mysql_error();				
+				}
+				else
+				{
+					$data = $this->helper->getUpdateString($record);	
+					$sql = "UPDATE ".$this->table_product_value." SET ".$data." WHERE product_id=".$edata['id'];		
+					$rs = mysql_query($sql);
+					if(!$rs)
+					{
+						$rs = mysql_error();												
+					}
+				}				
+			}		
+			return $rs;		
+		}
+		catch(Exception $e)
+		{
+			return $e->getMessage();
+		}
+	}
+	
+	public function boxToParcel($post)
+	{
+		try
+		{
+			$rs = 1;			
+			$id = $post['id'];
+			$edata = $this->getDetail($id,'all');
+			
+			$products = explode(',',$post['products']);
+			$bp = array();	
+			foreach(explode(',',$edata['parcel_products'] ) as $k => $v)
+			{
+				$data = $this->getDetail($v,'all');
+				if(!in_array($v,$products))
+				{
+					$bp[] = $v;
+					continue;
+				}
+				$edata['rought_pcs']  -= $data['rought_pcs'];
+				$edata['rought_carat']  -= $data['rought_carat'];
+				$edata['polish_pcs']  -= $data['polish_pcs'];
+				$edata['polish_carat']  -= $data['polish_carat'];
+				$edata['cost']  -= $data['cost'];
+				$edata['price']  -= $data['price'];
+				$edata['amount']  -= $data['amount'];
+				
+
+				$sql = "UPDATE ".$this->table_product." SET parcel_id=''  WHERE id=".$data['id'];		
+						
+				$rs = mysql_query($sql);
+				if(!$rs)
+				{
+					$rs = mysql_error();									
+				}
+				
+			}
+			
+			if($rs)
+			{	
+				$record = $edata['record'];
+				unset($edata['record']);
+				
+				
+				$edata['parcel_products'] = implode(",",$bp);
+				$edata['box_products']  ="";
+				
+			
+				$data = $this->helper->getUpdateString($edata);	
+				$sql = "UPDATE ".$this->table_product." SET ".$data." WHERE id=".$edata['id'];		
+				$rs = mysql_query($sql);
+				if(!$rs)
+				{
+					$rs = mysql_error();				
+				}
+				else
+				{
+					$data = $this->helper->getUpdateString($edata);	
+					$sql = "UPDATE ".$this->table_product_value." SET ".$data ." WHERE product_id=".$edata['id'];		
+					$rs = mysql_query($sql);
+					if(!$rs)
+					{
+						$rs = mysql_error();												
+					}
+				}
+				
+			}
+			$post['products'] = $products ;
+			$rs = $this->helper->toBoxOrParcel($post);	
+			
+			return $rs;		
+		}
+		catch(Exception $e)
+		{
+			return $e->getMessage();
+		}
+	}
+}
+
+
+

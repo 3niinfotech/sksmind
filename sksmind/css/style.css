@@ -1,0 +1,115 @@
+.error_div {
+  background-color: #f44336;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 1px;
+  padding: 19px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  left:0;
+}
+
+.success_div {
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 1px;
+  padding: 19px;
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  z-index: 999;
+}
+
+
+
+/**** */
+.dashboard .col.s12.z-depth-6.card-panel {
+  cursor: pointer;
+  display: inline-block;
+  float: none;
+  height: 280px;
+  margin-left: 2%;
+  margin-right: 2%;
+  max-height: 280px;
+  max-width: 410px;
+  width: 28%;
+}
+.dashboard .col.s12.z-depth-6.card-panel:hover {
+  box-shadow: 0 0 20px 0 #333;
+}
+.my-account .right.hide-on-med-and-down {
+  width: 100%;
+}
+#dropdown1 {
+  left:0px !important;
+  opacity: 1;
+  position: absolute;
+  right: 1px;
+  top: 64px !important;
+  width: 215px !important;
+}
+.my-account {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 215px;
+  z-index: 99999;
+}
+.my-account .right.hide-on-med-and-down > li {
+  width: 100%;
+}
+.alink span {
+  float: left;
+  margin-right: 10px;
+  padding-bottom: 14px;
+}
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0; 
+}
+
+/******* Profile **/
+
+
+
+
+/*** Dashboard ****************/
+
+.company-list-heading {
+  margin:0px auto;
+  width: 750px;
+}
+.company-list-heading h4 {
+  float: left;
+}
+.company-list-heading .waves-effect.waves-light.btn-large {
+  float: right;
+}
+
+.collection {
+  border: 0 solid !important;
+  border-radius: 2px;
+  margin: 0.5rem 0 1rem;
+  min-height: 20px;
+  min-width: 300px;
+  position: relative;
+  margin:0px auto;
+  width: 750px;
+}
+
+.collection .collection-item {
+  background-color: #fff;
+  border: 1px solid #e0e0e0 !important;
+  line-height: 1.5rem;
+  margin: 0;
+  padding: 10px 20px;
+    margin-bottom: 10px !important;
+}

@@ -1,0 +1,577 @@
+body {
+	margin:0;
+}
+body, form {
+	font-family: "Droid Sans", Helvetica, Arial, sans-serif;
+	line-height: 1.125em; /* 18/16 */
+}
+
+.header_container {
+  background-color: #666;
+  min-height:55px;
+}
+
+
+
+.footer_container {
+  background-color: #000;
+  bottom: 0;
+  float: left;
+  position: fixed;
+  width: 100%;
+}
+.footer_outer{background-color:#027d57 }
+
+.footer {
+  min-height:150px;
+}
+
+.farm {
+  color: #fff;
+  font-size: 14px;
+  margin: 0;
+  padding: 15px 25px;
+  text-align: right;
+}
+.farm a {color:#fff; }
+
+.main_container {
+  min-height: 500px;
+  width:100%;
+  float:left;	
+}
+
+.main {
+  margin: 0 auto;
+  text-align: center;
+  width: 99%;
+}
+
+.home_login_from {padding:125px 0 50px;}
+.login_form_table {margin:0 auto}
+
+
+#welcome_label {
+  background-color: #335450 ;
+  color: #fff;
+  float: left;
+  margin-bottom: 25px;
+  padding: 5px 0;
+  width: 100%;
+}
+
+.home_login_from {
+  border: 1px solid #f00;
+  margin: 130px auto 80px;
+  padding: 0 0 15px;
+  width: 420px;
+}
+
+/*  top menu */
+.topmenu {
+  margin: 0 auto;
+  width: 80%;
+}
+.topmenu > ul {
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+}
+.topmenu ul li {
+  display:inline-block;
+  padding:0 5px;
+}
+
+.topmenu ul li a {
+ 
+  font-size: 17px;
+  text-decoration: none;
+  
+}
+
+/* company info */
+
+.company_info {
+  float: left;
+  min-height: 250px;
+  position: relative;
+  width: 100%;
+  padding: 10px 0 50px;
+}
+
+.company_info::before {
+  background: #000 none repeat scroll 0 0;
+  content: "";
+  left:15%;
+  min-height:600px;
+  position: absolute;
+  width: 2px;
+}
+
+.company_opration {
+  float: left;
+  width:15%;
+}
+
+.company_info_detail_lable > label {
+  margin-left: 65px;
+}
+
+.company_opration > ul {
+  padding:50px 0 0;
+}
+
+.company_opration li {
+  list-style: outside none none;
+}
+
+.company_info_detail_input.company_info_detail_input_date > input {
+  width: 88px;
+}
+.company_opration a {
+  border: 1px solid #000;
+  display: block;
+  height: 26px;
+  margin: 15px 0;
+  width: 90px;
+  padding-top: 5px;
+  text-transform: uppercase;
+  color:#000;
+  text-decoration:none;
+}
+
+.company_info_detail {float:left; width:85%; }
+.company_info_detail_left, .company_info_detail_right {
+  float: left;
+  width: 50%;
+}
+
+.company_info_field {
+  float: left;
+  padding: 10px 0;
+  width: 100%;
+}
+.company_info_detail_lable {
+  float: left;
+  width: 50%;
+  text-align: left;
+}
+.company_info_detail_input {
+  float: left;
+  width: 50%;
+}
+.company_info_field  input {
+  height: 30px;
+  width: 90%;
+}
+
+.company_info_field textarea {
+  height: 82px;
+  width: 90%;
+  line-height:1.2;
+}
+.company_info_key {float:left; width:100%;}
+.company_info_key .company_info_field{ width:50%;}
+
+.company_info_bottom {
+  float: left;
+  width: 100%;
+  padding-top:25px;
+}
+.company_info_bottom a {
+  border: 1px solid #ccc;
+  display: inline-block;
+  height: 25px;
+  margin: 0 10px;
+  padding-top: 5px;
+  width: 80px;
+}
+
+.company_info_bottom > ul {
+  padding: 0;
+}
+.company_info_bottom li {
+  display: inline;
+  list-style: outside none no;
+}
+
+a:hover{cursor:pointer}
+
+.success_error_msg {
+  background-color: #f00;
+  color: #fff;
+  padding: 5px 0 8px;
+  text-transform: uppercase;
+  margin-top: 30px;
+}
+
+.company_info_field select {
+  height: 30px;
+  width: 90%;
+}
+.success_error_msg p {margin:0}
+
+
+/* select company */
+
+.select_company {
+  margin: 0 auto;
+  text-align: center;
+  width: 400px;
+}
+
+.select_company .company_info_detail_lable > label {margin-left:5px;}
+.select_company .company_info_field {
+  border: 2px solid #ccc;
+  float: left;
+  margin-top: 50px;
+  padding: 25px 5px;
+  width: 100%;
+}
+
+.open_company {
+  width: 100%;
+  float: left;
+  padding:50px 0;
+}
+
+.open_company input {
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
+  display: inline-block;
+  font-size: 15px;
+  height: 35px;
+  padding: 1px 0 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 90px;
+}
+
+.open_company input:hover{cursor:pointer}
+
+
+.farm span {
+  float: left;
+}
+
+.company_menu ul {text-align:left}
+.company_menu ul li{padding: 0 25px;}
+
+.sidebar  {width:15%; float:left;}
+
+.sidebar ul {
+  padding: 0;
+}
+
+.sidebar li {
+  color: #f00;
+  font-weight: bold;
+  line-height: 1.5;
+  list-style: outside none none;
+  text-transform: uppercase;
+  text-align:left;
+}
+
+.sidebar li a {padding-left:10px; color:#000; font-weight:normal; text-decoration:none}
+.sidebar li a.active {color:#808}
+.sidebar_min ul {padding:0}
+.sidebar_min li{list-style:none; }
+
+.sidebar_min li a {
+  border: 1px solid #000;
+  color: #000;
+  display: block;
+  height: 26px;
+  margin: 15px 0;
+  padding-top: 5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 90px;
+}
+.content_left {
+  float: left;
+  width: 85%;
+  padding:50px 0;
+}
+.sidebar_min {
+  float: right;
+  width: 15%;
+}
+.master_group_form_div {
+  margin: 0 auto;
+  text-align: center;
+  width:100%;
+}
+
+.sidebar_min li a.active {
+  background: #0f0 none repeat scroll 0 0;
+}
+
+.master_content .success_error_msg {width:85%; margin:40px auto 0;}
+.ladger_entery_div {float:left; width:100%; padding-top:50px}
+.ladger_entery_div table { margin: 0 auto; width: 50% !important;}
+.topmenu ul li {float:left;}
+.top_menu_logout ,.top_menu_change_pass{float:right!important}
+
+.main_left {
+  float: left;
+  width: 75%;
+}
+.main_right {
+  float: left;
+  width: 25%;
+}
+.main_left > ul {
+  border-bottom: 1px solid #f1f1f1;
+  float: left;
+  width: 90%;
+  padding-bottom: 5px;
+}
+.main_left li {
+  float: left;
+  list-style: outside none none;
+  padding-top: 5px;
+  text-align: left;
+  text-transform: none;
+  width: 59%;
+}
+.main_left li:nth-child(3){
+  width: 15%;
+}
+.main_left li:last-child {
+  text-align: right;
+  width: 10%;
+}
+.main_user_left li {}
+.cat_detail_lable {
+  float: left;
+  text-align: left;
+  width:100%;
+  text-align:center;
+  font-size:18px
+}
+.cat_detail_lable_input{
+  float: left;
+  text-align: center;
+  width:100%;
+  padding-top:15px;
+}
+
+.company_info_field input {
+  height: 30px;
+  min-width: 200px;
+  width: 70%;
+}
+
+.company_info_field {
+  margin-bottom:5px;
+}
+
+
+.main {
+  padding-bottom: 50px;
+  padding-top: 30px;
+}
+
+.li_bold {
+  font-weight: bold;
+  padding-top: 0 !important;
+  text-transform: uppercase !important;
+}
+
+.company_info_detail_input {
+  float: left;
+  width: 100%;
+  margin-bottom:25px;
+}
+
+.company_info_detail_input select
+{
+  height: 30px;
+  min-width: 200px;
+  width: 70%;
+}
+
+.template_heading {
+  border-bottom: 1px solid #f1f1f1;
+  height: 52px;
+  margin: 0 auto 20px;
+  width: 97%;
+}
+.template_left {
+  float: left;
+  font-size: 25px;
+  letter-spacing: 2px;
+  margin-top: 15px;
+}
+.template_right { float: right; }
+.template_right > a {
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#CE_Editor1_ID
+{
+	width:100%!important;
+}
+
+#form1 .cat_detail_lable_input{padding-bottom:15px; margin-top:15px;}
+.cat_detail_lable_input > input {float: left; max-width: 500px; width: 100%; padding:5px; border:2px solid #d7e3f2}
+.template_view { float: left; margin-top: 15px; width:100%;}
+.template_view > ul {
+  float: left;
+  margin-bottom: 50px;
+  margin-left: 19px;
+  padding: 0 0 1px;
+  width: 100%;
+}
+
+.template_view li {
+  float: left;
+  height: 370px;
+  list-style: outside none none;
+  margin-bottom: 30px;
+  margin-right: 6.5%;
+  position: relative;
+  width: 45%;
+}
+
+.template_view li:nth-child(2n) {
+  margin-right: 0 !important;
+}
+.template_content {
+  border: 1px solid #ccc;
+  border-radius: 7px 7px 0px 0px;
+  height: 315px;
+  margin-bottom: 0px;
+  overflow: scroll;
+}
+.template_name {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background-color: #2069b4;
+  border-color: -moz-use-text-color #2069b4 #2069b4;
+  border-image: none;
+  border-radius: 0 0 7px 7px;
+  border-style: none solid solid;
+  border-width: 0 1px 1px;
+  color: #fff !important;
+  margin-bottom: 10px !important;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.submenu_item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: none;
+  min-height: 35px;
+  padding-bottom: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  position: absolute;
+  margin-left:0px;
+}
+.submenu_item > li {
+  padding: 8px 0 10px !important;
+  width: 150px;
+}
+
+.menu_li_last:hover .submenu_item
+{
+	display:block!important
+}
+.template_name > a {
+  color: #fff;
+  font-size: 20px !important;
+  text-transform: capitalize;
+}
+a:hove{text-decoration:none;}
+#sendemail {
+  float: left;
+  text-align: center;
+  width: 100%;
+}
+
+#sendemail .company_info_detail_input {
+  border: 1px solid #000;
+  padding: 50px 0;
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.submit_button_div {
+  padding:20px 0px;
+}
+.submit_button_div .submit_button {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: 1px solid #666;
+  font-size: 16px;
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+.main_right .company_info_field input {
+  height: 30px;
+  min-width: 200px;
+  width: 70%;
+  float:none;
+}
+#template_title {
+  height: 30px;  
+}
+.blue {
+	background-color: #2069b4;
+	color: white;
+}
+.template_right > a {
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.button {
+  background-repeat: no-repeat;
+  display: inline-block;
+  padding: 0.833em;
+  text-decoration: none;
+}
+.round {
+  border-radius: 0.3125em;
+}
+a, a:hover {
+  
+  text-decoration: none;
+}
+.btn-left {
+  background: #27ae60 none repeat scroll 0 0;
+  margin-right: 16px;
+}
+.tempate-action {
+  border: 0 none;
+  bottom: 90px;
+  position: absolute;
+  right: 14px;
+  text-align: right;
+}
+.btn-action {
+  border-radius: 93px;
+  color: #fff;
+  float: left;
+  font-size: 24px !important;
+  margin-right: 11px;
+  padding: 12px;
+  text-align: center;
+  width: 25px;
+}
+.t-orange{background:#ff6633}
+.t-blue{background:#3399cc}
+.t-yellow{background:#ffcc33}
+.t-green{background:#66cc33}
+.t-purple{background:#993399}
+.t-red{background:#ff3333}
+
+.template_view li:hover .tempate-action{display:block !important;}

@@ -1,0 +1,9 @@
+[
+	{"name":"id","title":"ID"},
+	{"name":"username","title":"User Name"},	
+	{"name":"email","title":"Email"},
+	{"name":"fname","title":"First Name"},	
+	{"name":"lname","title":"Last Name"},	
+	{"name":"mobile","title":"Mobile"},
+	{"name":"address","title":"Address"}	
+]

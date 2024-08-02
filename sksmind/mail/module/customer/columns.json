@@ -1,0 +1,12 @@
+[
+	{"name":"mass_delete","title":"<a id = 'massdelete' onclick='massdeleteEmail()' class='fa fa-trash grid-icon red'></a>","style":{"width":10,"maxWidth":10}, "filterable":false, "sortable":false},
+	{"name":"id","title":"ID","breakpoints":"xs sm","type":"number","style":{"width":60,"maxWidth":60}},
+	{"name":"name","title":"Name"},
+	{"name":"email","title":"Email"},
+	{"name":"company_name","title":"Company"},
+	{"name":"mo_no","title":"Telephone"},
+	{"name":"in_category","title":"Category"},
+	{"name":"in_country","title":"Country"},	
+	{"name":"last_li","title":"Action","filterable":false}
+
+]

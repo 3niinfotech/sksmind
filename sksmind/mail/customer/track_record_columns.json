@@ -1,0 +1,7 @@
+[
+	{"name":"id","title":"ID","breakpoints":"xs sm","type":"number","style":{"width":80,"maxWidth":80}},
+	{"name":"email_id","title":"Email Address"},
+	{"name":"c_name","title":"Customer Name"},
+	{"name":"no_open","title":"Open"},
+	{"name":"last_read","title":"Last Read","style":{"width":150,"maxWidth":150}}
+]
